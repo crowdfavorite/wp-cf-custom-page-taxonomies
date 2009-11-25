@@ -149,7 +149,7 @@ class CFCustomPagesTaxonomies {
 				case 'tag':
 					$this->tag_style_tax_box($tax_name,$taxonomy,$helps,$post,$box);
 					break;
-				
+				case 'category':
 				case 'cat':
 					$this->cat_style_tax_box($tax_name,$taxonomy,$helps,$post,$box);
 					break;
