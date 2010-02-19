@@ -110,7 +110,7 @@ class CFCustomPagesTaxonomies {
 	function create_taxonomies() {
 		foreach ($this->config as $tax => $tax_info) {
 			if (!is_taxonomy($tax_info['tax_name'])) {
-				register_taxonomy($tax_info['tax_name'], $tax_info['tax_scope'], array('hierarchical'=>FALSE, 'label'=>$tax_info['tax_label'], 'query_var'=>$tax_info['tax_name'], 'rewrite'=>$tax_info['tax_name']));
+				register_taxonomy($tax_info['tax_name'], $tax_info['tax_scope'], array('hierarchical'=>FALSE, 'label'=>$tax_info['tax_label'], 'query_var'=>$tax_info['tax_name'], 'rewrite'=>$tax_info['tax_rewrite']));
 			}
 			if (!empty($tax_info['tax_meta_key'])) {
 				$convert_tax = new CFPostMetaToTax($tax_info['tax_meta_key'],$tax_info['tax_name']);
