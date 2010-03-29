@@ -3,7 +3,7 @@
 Plugin Name: CF Custom Page Taxonomies 
 Plugin URI: http://crowdfavorite.com 
 Description: Allows custom taxonomies for pages to display ui widgets on the edit-page page 
-Version: .25 
+Version: .9 
 Author: Crowd Favorite
 Author URI: http://crowdfavorite.com
 */
@@ -204,9 +204,11 @@ class CFCustomPagesTaxonomies {
 			if (is_object_in_term($post->ID, $tax_name, $term->name) === TRUE) {
 				$checked=' checked="checked"';
 			}
-			echo '<p><input type="checkbox" name="tax_input['.$tax_name.']" value="'.$term->name.'" id="'.$term->name.'"'.$checked.'><label for="'.$term->name.'">'.$term->name.'</label></p>';
+			echo '<p><input type="checkbox" name="tax_input['.$tax_name.'][]" value="'.$term->slug.'" id="'.$term->name.'"'.$checked.'><label for="'.$term->name.'">'.$term->name.'</label></p>';
 		}
-		echo '<p><a id="add_tax_term" href="'.site_url('wp-admin/edit-tags.php?taxonomy='.$tax_name).'">Add New '.$this->config[$tax_name]['tax_label'].'</a></p>';
+		if (is_admin()) {
+			echo '<p><a id="add_tax_term" href="'.site_url('wp-admin/edit-tags.php?taxonomy='.$tax_name).'">Add New '.$this->config[$tax_name]['tax_label'].'</a></p>';
+		}
 	}
 	
 	/**
